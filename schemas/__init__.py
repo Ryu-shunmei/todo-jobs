@@ -2,7 +2,8 @@ from .users import (
     NewUser,
     TokenPayload,
     TokenReturn,
-    LoginUser
+    LoginUser,
+    UpdatePwd
 )
 from .common import (
     ComReturn,

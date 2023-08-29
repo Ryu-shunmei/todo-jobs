@@ -15,6 +15,9 @@ class NewUser(BaseUser):
     first_name: str = Field(..., max_length=48)
     password: str = Field(..., min_length=6, max_length=16)
 
+class UpdatePwd(BaseUser):
+    password: str = Field(..., min_length=6, max_length=16)
+
 
 class TokenPayload(BaseUser):
     id: UUID
