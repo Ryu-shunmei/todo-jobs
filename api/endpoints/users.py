@@ -53,8 +53,8 @@ async def change_pw(new_user: PwUser, db: Session = Depends(get_sesston)):
     new_hashed_pw = get_password_hash(new_user.password)
     user = await check_user(db, new_user.email)
     if not user:
-        JSONResponse(status_code=status.HTTP_404_NOT_FOUND,
-                     content=ComReturn(message=f'email {user.email} 用户不存在'))
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND,
+                            content=ComReturn(message=f'email {user.email} 用户不存在').model_dump_json())
 
     prev_pws = await query_all_pws(db, user.id)
     pw_deque = deque(prev_pws, maxlen=settings.PW_CHANGE_LIMIT)
