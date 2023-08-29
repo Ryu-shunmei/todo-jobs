@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 
 __session = sessionmaker(bind=create_engine(
     settings.SQLALCHEMY_DATABASE_URI, pool_pre_ping=True), autoflush=False, autocommit=False)
+print(settings.SQLALCHEMY_DATABASE_URI)
 
 
 def get_sesston() -> Generator:
