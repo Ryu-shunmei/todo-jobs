@@ -8,7 +8,6 @@ from database import get_sesston
 from crud import (
     check_user, add_new_user_with_pw,
     query_pw_with_user_id, query_all_pws, upsert_pw,
-    query_last_pw
 )
 from typing import Union
 from auth import verify_password, get_password_hash, create_token

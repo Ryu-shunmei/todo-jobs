@@ -38,10 +38,6 @@ async def query_pw_with_user_id(db: Session, user_id: UUID) -> Optional[Password
     return db.query(Password).filter(Password.user_id == user_id).order_by(Password.updated_at.desc()).first()
 
 
-async def query_last_pw(db: Session, user_id: UUID) -> Optional[Password]:
-    return db.query(Password).filter(Password.user_id == user_id).order_by(Password.record.desc()).first()
-
-
 async def query_all_pws(db: Session, user_id: UUID) -> Optional[Password]:
     return db.query(Password).filter(Password.user_id == user_id).order_by(Password.record.asc())
 
