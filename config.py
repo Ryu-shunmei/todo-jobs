@@ -19,8 +19,8 @@ class __Settings(BaseSettings):
     TOKEN_EXPIRE_MINUTES: int
 
     @property
-    def SQLALCHEMY_DATABASE_URI(self):
-        return f'postgresql+psycopg2://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}'
+    def DATABASE_URI(self):
+        return f'postgresql://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}'
 
 
 settings = __Settings()
