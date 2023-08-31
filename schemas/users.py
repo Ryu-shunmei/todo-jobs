@@ -1,14 +1,30 @@
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict, TypeAdapter
 from .common import UserStatus
 from uuid import UUID
+from typing import List
 
 
 class BaseUser(BaseModel):
     email: str = Field(...,
                        pattern=r'^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$')
 
+
 class LoginUser(BaseUser):
     password: str
+
+
+class UpdateUser(BaseUser):
+    password: str
+
+
+class PwUser(BaseModel):
+    user_id: UUID
+    record: int
+    hashed_password: str
+
+
+PwUserList = TypeAdapter(List[PwUser])
+
 
 class NewUser(BaseUser):
     last_name: str = Field(..., max_length=48)
